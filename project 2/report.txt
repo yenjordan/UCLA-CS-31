@@ -1,0 +1,201 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 2 Report
+Notable Obstacles:
+One of the notable obstacles I had to overcome was figuring out how to still output all of the remaining questions and request all of the remaining information from the user if my program detected an error in one of the users’ responses. Although this wasn’t exactly required according to the program guidelines, I wanted to make sure my program ran in the exact same way as the example provided. I was ultimately able to figure out that instead of writing each error message to “cout” as soon as it occurred, I instead created a string variable named “errorMessages” and wrote multiple else-if statements to assign different error messages to the the string “errorMessage” if the user’s input did not exactly match one of the required inputs from the project spec.
+
+
+Another notable obstacle that I had to overcome was determining the calculations of the plan discounts. At first, I was confused because I initially thought that the “Type of Plan Discounts” (where children receive a 50% discount and seniors receive a 25% discount) applied towards the “Kind of Plan” cost (where Executive costs $100.00 and Basic costs $50.00). However, in running my code in CodeBoard and comparing my code’s output to the CodeBoard output, I figured out that the “Type of Plan Discounts” applied towards the “Extra Cost for Everyday Access” and “Extra Cost for Facilities Access”. After this revelation, I made the proper adjustments to my calculations for the “Type of Plan Discounts” and it passed the test cases in CodeBoard. This showed me the importance of carefully reading and understanding the project spec to the best of my knowledge and the usefulness of CodeBoard.
+
+
+Test Data:
+
+
+Test Case
+	Test
+	Reason
+	1
+	Basic
+Adult
+Even
+Just One
+No
+No
+	Shows that the program properly builds and executes as expected
+
+
+Also shows calculations are correct based on the given table
+
+
+Also shows that final line of output matches what is required in the project spec
+	2
+	Executive
+Adult
+Even
+Just One
+No
+No
+	Shows cost for Executive is correct
+	3
+	Basic
+Child
+Odd
+Just One
+No
+No
+	Shows Child discount is properly applied to membership price
+	4
+	Basic
+Senior
+Odd
+Just One
+No
+No
+	Shows Senior discount is properly applied to membership price
+	5
+	Basic
+Senior
+Everyday
+Just One
+No
+No
+	Shows Everyday extra cost is properly applied to membership price
+	6
+	Basic
+Senior
+Everyday
+Regional
+No
+No
+	Shows Regional extra cost is properly applied to membership price
+	7
+	Basic
+Senior
+Everyday
+National
+No
+No
+	Shows National extra cost is properly applied to membership price
+	8
+	Basic
+Senior
+Everyday
+Regional
+Yes
+No
+	Shows Autopay discount is properly applied to membership price
+	9
+	Basic
+Senior
+Everyday
+Regional
+No
+Yes
+	Shows Paperless Billing discount is properly applied to membership price
+	10
+	Ultimate
+Child
+Odd
+Just One
+No
+No
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error in the kind of membership and outputs the correct error message
+	11
+	Basic
+Baby
+Odd
+Just One
+No
+No
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error in the type of membership and outputs the correct error message
+	12
+	Basic
+Child
+Forever
+Just One
+No
+No
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error in the membership days and outputs the correct error message
+	13
+	Basic
+Child
+Odd
+All Facilities
+No
+No
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error in the facilities choice and outputs the correct error message
+	14
+	Basic
+Child
+Odd
+Just One
+Idk
+No
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error regarding the autopay and outputs the correct error message
+	15
+	Basic
+Child
+Odd
+Just One
+No
+Maybe
+	Shows that the program outputs all of the remaining questions and takes in all of the remaining information from the user even when there is an error
+
+
+Shows that the program properly identifies an error regarding the paperless billing and outputs the correct error message
+	16
+	Basic
+Adult
+Even
+Just One
+no
+No
+	Shows that user input is case-sensitive and will result in an error; it must match exactly what is stated in the project spec
+	17
+	Basic
+Adult
+Even
+
+
+No
+No
+	Shows entering blank input will result in an error; it must match exactly what is stated in the project spec
+	18
+	1
+2
+3
+4
+5
+6
+	Shows that no matter how many errors there are in the user’s input, the program will only output the error message corresponding with the first occurring error
+	19
+	Basic
+Adult
+Even
+JustOne
+No
+No
+	Shows that not having a space in between “Just One” will result in an error; it must match exactly what is stated in the project spec
+	20
+	Executive
+Senior
+Everyday
+National
+Yes
+Yes
+	Shows that all of the discounts and extra costs are properly applied to the overall gym membership price

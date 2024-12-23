@@ -1,0 +1,137 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 5 Report
+Notable Obstacles:
+
+
+While I didn’t have a particular obstacle that was noticeably the hardest to overcome, I would say that the obstacle that took the most time was the implementation of bool purchaseItem(...) where two giftCards could be used together to cover the cost of an item. This was the longest function I had to implement for this project, and I had to ensure that I first checked if the retailer names matched the retailer of both GiftCards and if the cost is positive, then calculated the total amount across both GiftCards (if the total amount was less than the cost, the purchase couldn’t be completed), and finally deducted the cost from one or both GiftCards to ensure that both were used optimally. Again, this wasn’t particularly difficult but I had to make sure I was properly following the instructions of this function, which was the most tedious one.
+
+
+Test Data:
+
+
+Test Case
+	Test
+	Reason
+	1
+	GiftCard g( "Old Navy", 500.00 );
+assert( g.getRetailer() == "Old Navy");
+	Tests that the getter method getRetailer works as specified, retrieving the retailer
+	2
+	GiftCard g( "Old Navy", 500.00 );
+assert( std::to_string( g.getAmount() ) == "500.000000" );
+	Tests that the setter method getAmount works as specified, retrieving the total value of the gift card
+	3
+	GiftCard g( "Old Navy", 500.00 );
+g.setAmount( 1 );
+assert( std::to_string( g.getAmount() ) == "1.000000" );
+
+
+	Tests that the setter method setAmount works as specified, setting the value of the gift card
+	4
+	GiftCard g( "Old Navy", 500.00 );
+g.empty(  );
+
+
+	Tests that the function .empty and works as specified, reducing the outstanding card amount to zero
+	5
+	GiftCard g( "Old Navy", 500.00 );
+g.empty(  );
+assert( g.isEmpty() );
+
+
+	Tests that the function .isEmpty and works as specified, returning false when the outstanding card amount is zero or less
+	6
+	GiftCard g( "Old Navy", 500.00 );
+g.empty(  );
+assert( g.isEmpty() );
+
+
+	Tests that the function .empty and works as specified, returning true when the outstanding card amount is zero or less
+	7
+	GiftCard g( "Old Navy", 500.00 );
+assert( g.canBeUsedToPurchase( 300.00 ) );
+
+
+	Tests that the function .caBeUsedToPurchase works as specified, verifying that the passed amount parameter is equal to or smaller than the outstanding card amount and returns true
+	8
+	GiftCard g( "Old Navy", 500.00 );
+assert( g.canBeUsedToPurchase( 800.00 ) == false );
+
+
+	Tests that the function .caBeUsedToPurchase works as specified, verifying that the passed amount parameter is equal to or smaller than the outstanding card amount and returns false if it doesn’t meet this requirement
+	9
+	Retailer r( "Old Navy" );
+assert(r.getName() == "Old Navy" );
+
+
+	Tests that the getter method .getName works as specified, retrieving the retailer name
+	10
+	Retailer r( "Old Navy" );
+GiftCard g( "Old Navy", 300.00 );
+assert(r.purchaseItem( "backpacks", 500.00, g ));
+assert(std::to_string( g.getAmount() ) == "300.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, verifying that the passed GiftCard parameter has enough money on the gift card to buy the desired item and then reduces the GiftCard’s amount by the item’s cost, then returning true after buying the item
+	11
+	Retailer r( "Old Navy" );
+GiftCard g( "Old Navy", 500.00 );
+assert(r.purchaseItem( "backpacks", 800.00, g ) == false );
+assert(std::to_string( g.getAmount() ) == "500.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, checking if the passed GiftCard parameter has enough money on the gift card to buy the desired item and then reduces the GiftCard’s amount by the item’s cost, then returning false since there are insufficient funds
+	12
+	Retailer r( "Old Navy" );
+GiftCard g( "Old Navy", 500.00 );
+assert(r.returnItem( "backpacks", 800.00, g ));
+assert(std::to_string( g.getAmount() ) == "1300.000000" );
+
+
+	Tests that the function .returnItem works as specified, verifying that the item's cost is more than zero, then increasing the GiftCard’s amount by the item’s cost, then returning true after successfully returning an item
+	13
+	Retailer r( "Old Navy" );
+GiftCard target( "Target", 3.00 );
+assert(r.returnItem( "backpacks", 3.00, target ) == false );
+assert(std::to_string( target.getAmount() ) == "3.000000" );
+
+
+	Tests that the function .returnItem works as specified, returning false after not being able to return an item successfully
+	14
+	Retailer r( "Old Navy" );
+GiftCard target( "Target", 1.00 );
+assert(r.purchaseItem( "backpacks", 1.00, target ) == false );
+assert(std::to_string( target.getAmount() ) == "1.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, returning false after not being able to purchase an item successfully
+	15
+	Retailer r( "Old Navy" );GiftCard g( "Old Navy", 400.00 );
+GiftCard g1( "Old Navy", 400.00 );
+assert(r.purchaseItem( "backpacks", 700.00, g, g1 ));
+assert(std::to_string( g.getAmount() ) == "0.000000" );
+assert(std::to_string( g1.getAmount() ) == "100.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, allowing two GiftCards to be used together to buy an item by first using up the amount of card1 before reducing the amount in card2, and returning true when an item is purchased successfully
+	16
+	Retailer r( "Old Navy" );
+GiftCard g( "Old Navy", 500.00 );
+GiftCard g1( "Old Navy", 500.00 );
+assert(r.purchaseItem( "backpacks", 2100.00, g, g1 ) == false );
+assert(std::to_string( g.getAmount() ) == "500.000000" );
+assert(std::to_string( g1.getAmount() ) == "500.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, checking if two GiftCards can be used together to buy an item, returning false when an item is not purchased successfully
+	17
+	Retailer r( "Old Navy" );
+GiftCard g( "Old Navy", 500.00 );
+GiftCard g1( "Old Navy", 500.00 );
+assert(r.purchaseItem( "backpacks", 400.00, g, g1 ));
+assert(std::to_string( g.getAmount() ) == "100.000000" );
+assert(std::to_string( g1.getAmount() ) == "500.000000" );
+
+
+	Tests that the function .purchaseItem works as specified, allowing two GiftCards to be used together to buy an item by first using up the amount of card1 before reducing the amount in card2 (leaving the amount in card2 untouched if card1 covers the amount), and returning true when an item is purchased successfully

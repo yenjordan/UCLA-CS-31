@@ -1,0 +1,25 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 1 Report
+Step 5 Input - There were two different sets of input integers that I used in running the program built from original.cpp that produced incorrect/unusual/nonsensical results.
+
+
+I was first prompted with the question, “This Holiday Season, how many gifts did you receive?” I input the integer “20” which assumes that I received a maximum of 20 gifts. Following my input, I was then prompted with the question “and how many of those gifts did you re-gift to others?” I then input the integer “30”, which produced an incorrect result. I knew this input would result in an incorrect, nonsensical result because I stated that I had received 20 gifts total, and I had just stated that I re-gifted 30 of those gifts to others. As expected, the program output “Enjoy your remaining -10 gifts!  Happy Holidays!” then output "Something looks awry with the numbers...".
+
+
+For the second set of input integers that produced incorrect/unusual/nonsensical results, I responded to the first question of “This Holiday Season, how many gifts did you receive?” with the integer “-10”, which I knew would produce a nonsensical result since it’s impossible to have -10 gifts. In response to the second question “and how many of those gifts did you re-gift to others?”, I responded with the integer “3”. As expected, the program output “Enjoy your remaining -13 gifts! Happy Holidays!” then output "Something looks awry with the numbers...".
+
+
+logic_error.cpp error - The error that I introduced into logic_error.cpp that altered the program built from original.cpp was that I changed the calculations in determining how many gifts I still had after re-gifting them to others. The original program was built so that it would take the integer that was inputted after the question "This Holiday Season, how many gifts did you receive?" and store it into a variable called “giftCount”. Then the program prompts a second question which is “and how many of those gifts did you re-gift to others?” The program then stores that integer into the variable “regiftedCount”. The original program was written to subtract regiftedCount from giftCount (“giftCount - regiftedCount”), but I decided to change the subtraction symbol to a division symbol in this calculation so that it would read “giftCount / regiftedCount”. This is an error because it produces an incorrect result regarding the amount of gifts that I have remaining after I re-gift them to others. For example, if I input that I received 30 gifts and re-gifted 2, the program would output “Enjoy your remaining 15 gifts! Happy Holidays!” when it should output “Enjoy your remaining 28 gifts! Happy Holidays!”, therefore resulting in a logic error.
+
+
+compile_error.cpp error - The first error that I introduced into compile_error.cpp that altered the program built from original.cpp was that I used an undefined integer variable in the calculation to generate the amount of gifts I still had after re-gifting them to others. Instead of using the declared variable “giftCount” that is used in the calculation “giftCount - regiftedCount”, I replaced “giftCount” with an undeclared variable named “countGift” so that the equation read “countGift - regiftedCount”. This led to a compile error because “countGift” was not declared as a variable in the program, causing the program to fail to compile.
+
+
+The second error that I introduced into compile_error.cpp that altered the program built from original.cpp was that I removed one of the less-than signs in one the left-shift operators in the line “cout << "Something looks awry with the numbers...";” so that it read “cout < "Something looks awry with the numbers...";”. The original program was meant to output “Something looks awry with the numbers…” if the value stored in giftCount was less than zero or if the value stored in regiftedCount was more than the value stored in giftCount. However, removing a less-than sign hindered the entire expression because it was no longer working as a left-shift operator and therefore the program failed to compile.
+
+
+Error messages
+* compile_error.cpp
+   * “identifier "countGift" is undefined” - referring to the error where I used an undefined integer variable in the calculation to generate the amount of gifts I still had after re-gifting them to others.
+   * “no operator "<" matches these operands” - referring to the error where I removed a less-than sign in one of the left-shift operators of the original program.

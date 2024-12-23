@@ -1,0 +1,520 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 6 Report
+Notable Obstacles:
+
+
+For the most part, I did not have much trouble in implementing the class functions as specified in Beetle.cpp and BeetleGame.cpp (except for the initial confusion on the TODO comments in Beetle.cpp that Howard clarified). However, one of the main problems I had during this project was getting it to compile on my local VS Code terminal. This was because I kept getting an error with the std::string  BeetleGame::stringifyGameOutcome( ) const function, which was part of the provided skeleton for this project. When I would input “clang -c BeetleGame.cpp” onto my VS Code terminal, it would output three errors:
+
+error: integral constant expression must have integral or unscoped enumeration type, not 'cs31::BeetleGame::GameOutcome'
+        case GameOutcome::COMPUTERWONGAME:
+error: integral constant expression must have integral or unscoped enumeration type, not 'cs31::BeetleGame::GameOutcome'
+        case GameOutcome::HUMANWONGAME:
+error: integral constant expression must have integral or unscoped enumeration type, not 'cs31::BeetleGame::GameOutcome'
+        case GameOutcome::GAMENOTOVER:
+
+
+For some reason, I was unable to build my project on the VS Code terminal. However, I was able to build it on g31 and it executes as it should based on the project spec. It was just more tedious having to re-upload the files to g31 every time I made an edit that I wanted to test. I’m not sure why the VS Code terminal gave me these errors.
+
+
+
+
+Test Data:
+
+
+Test Case
+	Test
+	Reason
+	1
+	Beetle btl;
+assert( btl.hasBody() == false );
+assert( btl.isComplete() == false );
+btl.buildBody();
+assert( btl.hasBody() );
+assert( btl.isComplete() == false );
+
+
+	Tests that the hasBody() function works as specified, returning mBody as true if it has been built and false if it hasn’t
+
+
+Tests that the buildBody() function works as specified, setting mBody as true when the function is called
+
+
+Tests that the isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	2
+	Beetle btl;
+assert( btl.hasTail() == false );
+assert( btl.isComplete() == false );
+btl.buildTail();
+assert( btl.hasTail() );
+assert( btl.isComplete() == false );
+
+
+	Tests that the hasTail() function works as specified, returning mTail as true if it has been built and false if it hasn’t
+
+
+Tests that the buildTail() function works as specified, setting mTail as true when the function is called
+
+
+Tests that the isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	3
+	Beetle btl;
+assert( btl.hasHead() == false );
+assert( btl.isComplete() == false );
+btl.buildHead();
+assert( btl.hasHead() );
+assert( btl.isComplete() == false );
+
+
+	Tests that the hasHead() function works as specified, returning mHead as true if it has been built and false if it hasn’t
+
+
+Tests that the buildHead() function works as specified, setting mHead as true when the function is called
+
+
+Tests that the isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	4
+	Beetle btl;
+assert( btl.hasEye1() == false );
+assert( btl.hasEye2() == false );
+assert( btl.isComplete() == false );
+btl.buildEye();
+assert( btl.hasEye1() );
+assert( btl.hasEye2( ) == false );
+btl.buildEye( );
+assert( btl.hasEye1() );
+assert( btl.hasEye2( ) );
+assert( btl.isComplete() == false );
+
+
+	Tests that the hasEye1() and hasEye2() functions work as specified, returning true for mEye1, then mEye2, individually if they have been built and false individually if they haven’t
+
+
+Tests that buildEye() function works as specified, setting mEye1, then mEye2, as true individually when the function is called
+
+
+Tests that isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	5
+	Beetle btl;
+assert( btl.hasAntenna1() == false );
+assert( btl.hasAntenna2() == false );
+assert( btl.isComplete() == false );
+btl.buildAntenna();
+assert( btl.hasAntenna1() );
+assert( btl.hasAntenna2( ) == false );
+btl.buildAntenna( );
+assert( btl.hasAntenna1() );
+assert( btl.hasAntenna2( ) );
+assert( btl.isComplete() == false );
+
+
+	Tests that the hasAntenna1() and hasAntenna2() functions work as specified, returning true for mAntenna1, then mAntenna2, individually if they have been built and false individually if they haven’t
+
+
+Tests that buildAntenna() function works as specified, setting mAntenna1, then mAntenna2, as true individually when the function is called
+
+
+Tests that isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	6
+	Beetle btl;
+assert( btl.hasLeg1() == false );
+assert( btl.hasLeg2() == false );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+assert( btl.isComplete() == false );
+btl.buildLeg();
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() == false );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+btl.buildLeg( );
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+
+
+btl.buildLeg( );
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() );
+assert( btl.hasLeg4() == false );
+btl.buildLeg();
+
+
+btl.buildLeg( );
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() );
+assert( btl.hasLeg4() );
+assert( btl.isComplete( ) == false );
+	Tests that the hasLeg1(), hasLeg2(), hasLeg3(), and hasLeg4() functions work as specified, returning true for mLeg1 (then mLeg2, mLeg3, mLeg4) individually if they have been built and false individually if they haven’t
+
+
+Tests that buildLeg() function works as specified, setting mLeg1 (then mLeg2, mLeg3, mLeg4) as true individually when the function is called
+
+
+Tests that isComplete() function works as specified, returning all the body parts (private bools) as true if they have been built and false if they haven’t
+	7
+	BeetleGame bGame;
+bGame.humanRoll( 1 );
+assert( bGame.getHumanDie() == 1 );
+bGame.computerRoll( 5 );
+assert( bGame.getComputerDie( ) == 5 );
+	Tests that the humanRoll() function works as specified working with “cheating values” by setting a specific die value to force certain play to occur
+
+
+Tests that the getHumanDie() function works as specified, returning the value of the Human's die
+
+
+Tests that the computerRoll() function works as specified working with “cheating values” by setting a specific die value to force certain play to occur
+
+
+Tests that the getComputerDie() function works as specified, returning the value of the Computer’s die
+	8
+	BeetleGame bGame;
+bGame.humanRoll( 1 );
+assert( bGame.getHumanDie() == 1 );
+bGame.computerRoll( 5 );
+assert( bGame.getComputerDie( ) == 5 );
+	Tests that the humanRoll() function works as specified working with random values  so that when the amount is zero, it is a random roll and therefore randomly generates a number between 1 and 6 for the die roll
+
+
+Tests that the computeRoll() function works as specified working with random values  so that when the amount is zero, it is a random roll and therefore randomly generates a number between 1 and 6 for the die roll
+	9
+	BeetleGame bGame;
+assert( bGame.determineGameOutcome() == BeetleGame::GameOutcome::GAMENOTOVER );
+assert( bGame.getHumanBeetle().isComplete() == false );
+assert( bGame.getComputerBeetle().isComplete() == false );
+assert( bGame.gameIsOver() == false );
+
+
+	Tests that the determineGameOutcome() function works as specified, determining what the current state of the game is
+
+
+Tests that the gameIsOver() function works as specified, determining whether or not the game ended with a winner
+	10
+	BeetleGame bGame;
+bGame.humanRoll( 1 );
+bGame.humanPlay();
+bGame.computerRoll( 1 );
+bGame.computerPlay();
+
+
+bGame.humanRoll( 2 );
+bGame.humanPlay();
+bGame.computerRoll( 2 );
+bGame.computerPlay();
+
+
+bGame.humanRoll( 3 );
+bGame.humanPlay();
+bGame.computerRoll( 3 );
+bGame.computerPlay();
+
+
+bGame.humanRoll( 4 );
+bGame.humanPlay();
+bGame.computerRoll( 4 );
+bGame.computerPlay();
+
+
+bGame.humanRoll( 5 );
+bGame.humanPlay();
+bGame.computerRoll( 5 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasBody() == false );
+assert( cout << bGame.getComputerBeetle().hasBody() == false );
+
+
+bGame.humanRoll( 6 );
+bGame.humanPlay();
+bGame.computerRoll( 6 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasBody() );
+assert( bGame.getComputerBeetle().hasBody() );
+
+
+	Tests that the humanPlay() function works as specified, converting the Human's die value to a Beetle's body part, then depending on the body part involved, enforcing the game ordering of body parts (body, then tail or leg(s) or head, then eyes or antenna(e). Also tests that the humanPlay() function build the desired body part on the Human's beetle if it’s allowed, and if a body part was successfully built, it returns true and false otherwise
+
+
+Tests that the computerPlay() function works as specified, converting the Computer’s die value to a Beetle's body part, then depending on the body part involved, enforcing the game ordering of body parts (body, then tail or leg(s) or head, then eyes or antenna(e). Also tests that the computerPlay() function build the desired body part on the Computer’s beetle if it’s allowed, and if a body part was successfully built, it returns true and false otherwise
+	11
+	BeetleGame bGame;
+assert( bGame.getHumanBeetle().hasBody() == false );
+assert( bGame.getComputerBeetle().hasBody() == false );
+
+
+bGame.humanRoll( 6 );
+bGame.humanPlay();
+bGame.computerRoll( 6 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasBody() );
+assert( bGame.getComputerBeetle().hasBody() );
+
+
+assert( bGame.getHumanBeetle().hasTail() == false );
+assert( bGame.getComputerBeetle().hasTail() == false );
+
+
+bGame.humanRoll( 4 );
+bGame.humanPlay();
+bGame.computerRoll( 4 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasTail() );
+assert( bGame.getComputerBeetle().hasTail() );
+
+
+assert( bGame.getHumanBeetle().hasHead() == false );
+assert( bGame.getComputerBeetle().hasHead() == false );
+
+
+bGame.humanRoll( 5 );
+bGame.humanPlay();
+bGame.computerRoll( 5 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasHead() );
+assert( bGame.getComputerBeetle().hasHead() );
+
+
+	Tests that the corresponding has…(), humanRoll(), and humanPlay() functions for individual body parts work as specified. These functions work together—has…() determines whether or not the Human’s beetle has that body part, and if not, then the humanRoll() and humanPlay() functions can make it so that the Human’s beetle does have that body part, which is then checked by the has…() function again
+
+
+Tests that the corresponding has…(), computerRoll(), and computerPlay() functions for individual body parts work as specified. These functions work together—has…() determines whether or not the Computer’s beetle has that body part, and if not, then the computerRoll() and computerPlay() functions can make it so that the Computer’s beetle does have that body part, which is then checked by the has…() function again
+	12
+	BeetleGame bGame;
+assert( bGame.getHumanBeetle().hasLeg1() == false );
+assert( bGame.getComputerBeetle().hasLeg1() == false );
+
+
+bGame.humanRoll( 3 );
+bGame.humanPlay();
+bGame.computerRoll( 3 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasLeg1() );
+assert( bGame.getComputerBeetle().hasLeg1() );
+
+
+assert( bGame.getHumanBeetle().hasAntenna1() == false );
+assert( bGame.getComputerBeetle().hasAntenna1() == false );
+
+
+bGame.humanRoll( 2 );
+bGame.humanPlay();
+bGame.computerRoll( 2 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasAntenna1() );
+assert( bGame.getComputerBeetle().hasAntenna1() );
+
+
+assert( bGame.getHumanBeetle().hasEye1() == false );
+assert( bGame.getComputerBeetle().hasEye1() == false );
+
+
+bGame.humanRoll( 1 );
+bGame.humanPlay();
+bGame.computerRoll( 1 );
+bGame.computerPlay();
+
+
+assert( bGame.getHumanBeetle().hasEye1() );
+assert( bGame.getComputerBeetle().hasEye1() );
+
+
+	Tests that the corresponding has…(), humanRoll(), and humanPlay() functions for body parts (of which there are multiple) work as specified. These functions work together—has…() determines whether or not the Human’s beetle has that body part, and if not, then the humanRoll() and humanPlay() functions can make it so that the Human’s beetle does have that body part, which is then checked by the has…() function again
+
+
+Tests that the corresponding has…(), computerRoll(), and computerPlay() functions for body parts (of which there are multiple) work as specified. These functions work together—has…() determines whether or not the Computer’s beetle has that body part, and if not, then the computerRoll() and computerPlay() functions can make it so that the Computer’s beetle does have that body part, which is then checked by the has…() function again
+	13
+	Beetle btl;
+assert( btl.hasHead() == false );
+assert( btl.isComplete() == false );
+btl.buildHead();
+assert( btl.hasHead() );
+assert( btl.isComplete() == false );
+
+
+assert( btl.hasLeg1() == false );
+assert( btl.hasLeg2() == false );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+assert( btl.isComplete() == false );
+btl.buildLeg();
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() == false );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+btl.buildLeg();
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() == false );
+assert( btl.hasLeg4() == false );
+btl.buildLeg();
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() );
+assert( btl.hasLeg4() == false );
+btl.buildLeg();
+assert( btl.hasLeg1() );
+assert( btl.hasLeg2() );
+assert( btl.hasLeg3() );
+assert( btl.hasLeg4() );
+assert( btl.isComplete() == false );
+
+
+assert( btl.hasEye1() == false );
+assert( btl.hasEye2() == false );
+assert( btl.isComplete() == false );
+btl.buildEye();
+assert( btl.hasEye1() );
+assert( btl.hasEye2() == false );
+btl.buildEye();
+assert( btl.hasEye1() );
+assert( btl.hasEye2() );
+assert( btl.isComplete() == false );
+
+
+assert( btl.hasTail() == false );
+assert( btl.isComplete() == false );
+btl.buildTail();
+assert( btl.hasTail() );
+assert( btl.isComplete() == false );
+
+
+assert( btl.hasAntenna1() == false );
+assert( btl.hasAntenna2() == false );
+assert( btl.isComplete() == false );
+btl.buildAntenna();
+assert( btl.hasAntenna1() );
+assert( btl.hasAntenna2() == false );
+btl.buildAntenna();
+assert( btl.hasAntenna1() );
+assert( btl.hasAntenna2() );
+assert( btl.isComplete() == false );
+
+
+assert( btl.hasBody() == false );
+assert( btl.isComplete() == false );
+btl.buildBody();
+assert( btl.hasBody() );
+assert( btl.isComplete() == true );
+
+
+
+
+	Tests that the isComplete() function works as specified, verifying that if all body parts have been built, they are returned as true
+	14
+	BeetleGame bGame;
+
+
+bGame.humanRoll(6);
+bGame.humanPlay();
+
+
+bGame.computerRoll(6);
+bGame.computerPlay();
+
+
+bGame.humanRoll(5);
+bGame.humanPlay();
+
+
+bGame.computerRoll(5);
+bGame.computerPlay();
+
+
+bGame.humanRoll(4);
+bGame.humanPlay();
+
+
+bGame.computerRoll(4);
+bGame.computerPlay();
+
+
+bGame.humanRoll(3);
+bGame.humanPlay();
+
+
+bGame.computerRoll(3);
+bGame.computerPlay();
+
+
+bGame.humanRoll(3);
+bGame.humanPlay();
+
+
+bGame.computerRoll(3);
+bGame.computerPlay();
+
+
+bGame.humanRoll(3);
+bGame.humanPlay();
+
+
+bGame.computerRoll(3);
+bGame.computerPlay();
+
+
+bGame.humanRoll(3);
+bGame.humanPlay();
+
+
+bGame.computerRoll(3);
+bGame.computerPlay();
+
+
+bGame.humanRoll(2);
+bGame.humanPlay();
+
+
+bGame.computerRoll(2);
+bGame.computerPlay();
+
+
+bGame.humanRoll(2);
+bGame.humanPlay();
+
+
+bGame.computerRoll(2);
+bGame.computerPlay();
+
+
+bGame.humanRoll(1);
+bGame.humanPlay();
+
+
+bGame.computerRoll(1);
+bGame.computerPlay();
+
+
+bGame.humanRoll(1);
+bGame.humanPlay();
+
+
+bGame.computerRoll(1);
+bGame.computerPlay();
+
+
+assert(bGame.determineGameOutcome() == BeetleGame::GameOutcome::HUMANWONGAME);
+assert(bGame.gameIsOver() == true);
+	Tests that the determineGameOutcome() function works as specified, properly determining that the game is over
+
+
+Tests that the gameIsOver() function works as specified, properly determining that the game ended with a winner
+
+
+Tests that if both players make identical moves, whichever player has the first action will win the game—there are no ties. Since the Human always goes first, the Human will win first

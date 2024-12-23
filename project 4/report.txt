@@ -1,0 +1,156 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 4 Report
+Notable Obstacles:
+
+
+The main notable obstacle I had to overcome was determining how to implement the unionWithNoDuplicates function. I initially tried to process the elements from the size of array 1 (n1) and the size of array 2 (n2) simultaneously, but this proved to be a more complicated approach to this function. Instead, I decided to make two different processes for each of the different arrays and use the same logic for both of them. For n1, I iterated through the array and created a flag to track if the element was already in resultingString. I then iterated again to check if the current element existed in resultingString and if it was found, I marked the flag as true. If it wasn’t found, then I added that element to resultingString. I then repeated the same process for n2, and this proved to be an efficient way of implementing the function.
+
+
+Test Data:
+
+
+Test Case
+	Test
+	Reason
+	1
+	locateMinimum( [ "3", "2", "3", "5", "12", "14", "17" ], -3 )
+	Tests that function locateMinimum returns -1 if n < 0
+	2
+	locateMinimum( [ "3", "2", "3", "5", "12", "14", "17" ], 0 )
+	Tests that function locateMinimum returns -1 if n = 0
+	3
+	locateMinimum( [ "hh", "EE", "EE", "EE", "ff", "gg", "DD" ] , 7 )
+	Tests that function locateMinimum works as specified
+
+
+Tests that the function compares elements in the entire array lexicographically and returns the index of the smallest item found in the array
+	4
+	locateMinimum( [ "hh", "EE", "EE", "EE", "ff", "gg", "DD" ] , 5 )
+	Tests that function locateMinimum works as specified
+
+
+Tests that the function compares elements in the array lexicographically within a specific range of the array and returns the index of the smallest item found in the array
+	5
+	flipAround( [ "3", "2", "3", "5", "12", "14", "17" ], -3 )
+	Tests that the function flipAround returns -1 if n < 0
+	6
+	flipAround( [ "3", "2", "3", "5", "12", "14", "17" ], 0 )
+	Tests that the function flipAround returns -1 if n = 0
+	7
+	flipAround( [ "3", "2", "3", "5", "12", "14", "17" ], 7 )
+	Tests that the function flipAround works as specified
+
+
+Tests that the function properly flips the items found in the entire array, keeps track of all the flips it performs, and returns that count
+	8
+	flipAround( [ "3", "2", "3", "5", "12", "14", "17" ], 5 )
+	Tests that the function flipAround works as specified
+
+
+Tests that the function properly flips the items found within a specific range of the array, keeps track of all the flips it performs, and returns that count
+	9
+	isInIncreasingOrder( [ "3", "2", "3", "5", "12", "14", "17" ], -12 )
+	Tests that the function flipAround returns false if n < 0
+	10
+	isInIncreasingOrder( [ "3", "2", "3", "5", "12", "14", "17" ], 0 )
+	Tests that the function flipAround returns true if n = 0
+	11
+	isInIncreasingOrder( [ "D", "E", "EE", "EE", "f", "d", "e" ], 7  )
+	Tests that the function isInIncreasingOrder works as specified
+
+
+Tests that the function properly returns false if it does not satisfy the requirement of every value in the entire array being larger than the one that precedes it
+	12
+	isInIncreasingOrder( [ "D", "E", "EE", "EE", "f", "d", "e" ], 4  )
+	Tests that the function isInIncreasingOrder works as specified
+
+
+Tests that the function properly returns false if it does not satisfy the requirement of every value within a specific range of the array being larger than the one that precedes it
+	13
+	isInIncreasingOrder( [ "D", "E", "EE", "EE", "f", "d", "e" ], 3  )
+	Tests that the function isInIncreasingOrder works as specified
+
+
+Tests that the function properly returns true if it satisfies the requirement of every value within a specific range of the array being larger than the one that precedes it
+	14
+	hasNoDuplicates( [ "3", "2", "3", "5", "12", "14", "17" ], -3 )
+	Tests that the function hasNoDuplicates returns false if n < 0
+	15
+	hasNoDuplicates( [ "3", "2", "3", "5", "12", "14", "17" ], 0 )
+	Tests that the function hasNoDuplicates returns true if n = 0
+	16
+	hasNoDuplicates( [ "DD", "EE", "EE", "EE", "ff", "gg", "hh" ] , 7 )
+	Tests that the function hasNoDuplicates works as specified
+
+
+Tests that the function properly returns false if it does not satisfy the requirement of every value within the entire array being unique and unduplicated
+	17
+	hasNoDuplicates( [ "DD", "EE", "EE", "EE", "ff", "gg", "hh" ] , 4 )
+	Tests that the function hasNoDuplicates works as specified
+
+
+Tests that the function properly returns false if it does not satisfy the requirement of every value within a specific range of the array being unique and unduplicated
+	18
+	hasNoDuplicates( [ "DD", "EE", "EE", "EE", "ff", "gg", "hh" ] , 2 )
+	Tests that the function hasNoDuplicates works as specified
+
+
+Tests that the function properly returns true if it satisfies the requirement of every value within a specific range of the array being unique and unduplicated
+	19
+	shiftRight( [ "3", "2", "3", "5", "12", "14", "17" ], -8, 8, "" )
+	Tests that function shiftRight returns -1 if n < 0
+
+
+Tests that the function shiftRight returns -1 if the parameter amount exceeds n
+	20
+	shiftRight( [ "3", "2", "3", "5", "12", "14", "17" ], 0, -24, "" )
+	Tests that function shiftRight returns 0 if parameter amount is less than zero
+	21
+	shiftRight( [ "3", "2", "3", "5", "12", "14", "17" ], 0, 24, "" )
+	Tests that the function shiftRight returns -1 if the parameter amount exceeds n
+	22
+	shiftRight( [ "3", "2", "3", "5", "12", "14", "17" ], 6, 0, "" )
+	Tests that the function shiftRight works as specified
+
+
+Tests that the function properly returns the number of original array items still remaining in the array after all the shifting has been performed
+	23
+	shiftRight( [ "3", "2", "3", "5", "12", "14", "17" ], 7, 3, "xyz" )
+	Tests that the function shiftRight works as specified
+
+
+Tests that the function properly adjusts the items found in the array, shifts each value to the right by amount parameter, fills the resulting first amount elements of the array with the placeholder parameter, and finally returns the number of original array items still remaining in the array after all the shifting has been performed
+	24
+	unionWithNoDuplicates( [ "3", "2", "3", "5", "12", "14", "17" ], -24, [ "hh", "gg", "ff", "ee", "dd", "EE", "DD" ], 24, answer, resultingSize )
+	Tests that if either n1 or n2 is less than or equal to zero, set the resultingSize parameter to -1
+	25
+	unionWithNoDuplicates( [ "3", "2", "3", "5", "12", "14", "17" ], 24, [ "hh", "gg", "ff", "ee", "dd", "EE", "DD" ], 0, answer, resultingSize )
+	Tests that if either n1 or n2 is less than or equal to zero, set the resultingSize parameter to -1
+	26
+	unionWithNoDuplicates( [ "hh", "gg", "ff", "ee", "dd", "EE", "DD" ], 7, [ "hh", "EE", "EE", "EE", "ff", "gg", "DD" ], 7, answer, resultingSize )
+	Tests that the function unionWithNoDuplicates works as specified
+
+
+Tests that the function properly creates a new array by combining together all the items of array1 and array2, while ensuring that the new array has no duplicated values 
+	27
+	unionWithNoDuplicates( [ "hh", "gg", "ff", "ee", "dd", "EE", "DD" ], 3, [ "hh", "EE", "EE", "EE", "ff", "gg", "DD" ], 3, answer, resultingSize )
+	Tests that the function unionWithNoDuplicates works as specified
+
+
+Tests that the function properly creates a new array by combining together the items within a specified range of array1 and array2, while ensuring that the new array has no duplicated values 
+	28
+	findLastOccurrence( [ "3", "2", "3", "5", "12", "14", "17" ], -24, "9" )
+	Tests that function findLastOccurrence returns -1 if n < 0
+	29
+	findLastOccurrence( [ "3", "2", "3", "5", "12", "14", "17" ], 0, "9" )
+	Tests that function findLastOccurrence returns -1 if n = 0
+	30
+	findLastOccurrence( [ "3", "2", "3", "5", "12", "14", "17" ], 7, "9" )
+	Tests that function findLastOccurrence returns -1 if the index that holds the target value is not found at all
+	31
+	findLastOccurrence( [ "3", "2", "3", "5", "12", "14", "17" ], 7, "3" )
+	Tests that the function findLastOccurrence works as specified
+
+
+Tests that the function properly returns the largest index that holds the target value in the entire array

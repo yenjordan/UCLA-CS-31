@@ -1,0 +1,113 @@
+﻿Jordan Yen
+406224681
+CS 31 Project 3 Report
+Notable Obstacles:
+
+
+The main notable obstacle I had to overcome was figuring out how to iterate through the input string while simultaneously keeping track of the requirements for each character of the string. For example, I had to determine what characters could come before and after another character, such as the character ‘I’. To do this, I had to initialize multiple bools in the isValidCDPlayerString function so that I could write the if statements for each character in a switch case. This was very tedious, and I had to re-trace my program many times to find a small error.
+
+
+Description of Design:
+
+
+This program is designed to handle the functionality of a CD player. Each function in my program serves a specific purpose related to this functionality, such as checking if a CD player string is valid, determining if the player is open, checking for the presence of a CD, calculating the total tracks played, and finding the current track.
+
+
+isValidCDPlayerString Function: This function checks whether a given CD player string is valid or not. It iterates through the string character by character and verifies various conditions such as the sequence of operations (e.g., opening before inserting, inserting before playing, etc.), track sequence correctness, and ensuring the player state at the end of the string.
+
+
+isOpen Function: This function checks if the CD player is currently open. It relies on the isValidCDPlayerString function to ensure that the given string is valid before determining the player's state.
+
+
+hasCD Function: This function checks if a CD is currently inserted in the CD player. Similar to the isOpen function, it depends on the validity of the CD player string to determine the presence of a CD.
+
+
+totalTracksPlayed Function: This function calculates the total number of tracks played based on the given CD player string. It checks for the correctness of the track sequence and returns the count of tracks played.
+
+
+currentTrack Function: This function determines the current track being played on the CD player. It utilizes the totalTracksPlayed function to ensure the validity of the CD player string and then calculates the current track based on the player's state.
+
+
+
+
+Test Data:
+
+
+Test Case
+	Test
+	Reason
+	1
+	OICP123SP456SORICP123
+	covers various operations such as opening the CD player ('O'), inserting a CD ('I'), playing tracks ('P'), stopping ('S'), removing the CD ('R'), and closing the CD player ('C')
+
+
+tests the functionality of tracking and validating the sequential playback of tracks
+
+
+OICP123' and 'RICP123'
+	2
+	OIRICP123SOR
+	tests the isValidCDPlayerString function's ability to recognize and validate different operations in the correct order.
+
+
+tests the totalTracksPlayed function's ability to count the total number of tracks played and the currentTrack function's ability to correctly identify the current track being played
+
+
+tests the isOpen function's ability to determine if the CD player is open and the hasCD function's ability to detect if a CD is currently inserted
+	3
+	OICP123ORICP123
+	test case includes a sequence of operations such as opening ('O'), inserting ('I'), playing ('P'), removing ('R'), and closing ('C') the CD player.
+
+
+Tests hasCD and isOpen functions
+	4
+	OICPO
+	 verifies that the player can't insert a CD without being open ('O' before 'I'), and it checks if playing is allowed after inserting a CD ('P' after 'I')
+
+
+Tests if track numbers are required to play
+	5
+	OICP123O
+	 Includes a sequence of basic CD player operations like open, insert, play, and close
+
+
+Contains a sequential track order (1, 2, 3),
+
+
+Incorporates a mix of different operations (open, insert, play)
+	6
+	OICP123SOCP456S
+	Tests sequential track numbers ('123' followed by '456'), allowing testing of the track progression functionality
+	7
+	OICP123
+	Tests current track function
+	8
+	abc
+	Tests programs handling of invalid characters
+	9
+	oicr
+	Tests programs handling of invalid lowercase characters
+	10
+	OICR abcdadfaid
+	Tests programs handling of invalid space in string
+	11
+	R123S
+	Tests programs handling of starting with character ‘O’
+	12
+	OP123C
+	Tests that to be played, cd has to be inserted and the player has to be closed
+	13
+	OOO
+	Tests that cannot repeat character commands in string
+	14
+	ORCI123
+	Tests handling of order of characters
+
+
+Tests ability to remove cd if it’s not in there
+	15
+	OIRIRIRIRIRI
+	Tests ability to repeat commands multiple times in a string
+	16
+	OICP123SOCP456SOCP789
+	Tests handling and sequential order of integers 1-9
